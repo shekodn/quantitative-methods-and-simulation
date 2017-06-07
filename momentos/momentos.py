@@ -49,10 +49,10 @@ def getM(numberOfMoment, original_list):
     return counter / float(len(original_list))
 
 
+print "Insert your numbers separeted by a comma ex. (1,2,3,4) "
 
 str_arr = raw_input().split(',')
 arr = [int(num) for num in str_arr]
-
 
 original_list = arr
 
@@ -73,7 +73,8 @@ m2 = getM(2, original_list)
 print m2
 
 print '\n' + "VAR: "
-print getVar(m1, m2)
+var = getVar(m1, m2)
+print var
 
 print '\n' + "M3: (Asymmetry)"
 m3 = getM(3, original_list)
