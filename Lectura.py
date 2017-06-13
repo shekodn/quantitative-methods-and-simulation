@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import csv
+import math
 
 # Set figure aesthetics
 sns.set_style("white", {'ytick.major.size': 10.0})
@@ -51,6 +52,7 @@ users['date_first_active'] = pd.to_datetime((users.timestamp_first_active // 100
 
 
 cleanUsers = users[users['date_first_booking'].notnull()]
+cleanUsers = cleanUsers.sort_values(['id'], ascending=[1])
 notCleanUseres = users[users['date_first_booking'].isnull()]
 sessions_users.rename(columns={'user_id':'id'}, inplace=True)
 
@@ -58,11 +60,21 @@ sessions_users.rename(columns={'user_id':'id'}, inplace=True)
 plt.xlabel("Edad")
 plt.ylabel("Porcentaje")
 sns.distplot(cleanUsers.age.dropna(), color='#FD5C64')
-plt.show()
+#plt.show()
 sns.despine()
 
 cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
 cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
 cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
-plt.show()
+#plt.show()
+
+grpby = sessions_users.groupby(['id'])['secs_elapsed'].sum().reset_index()
+grpby.columns = ['id','secs_elapsed']
+
+cleanGroupSec = grpby[grpby['secs_elapsed'].notnull()]
+
 ##########################################
+
+cleanSessions = cleanUsers.merge(cleanGroupSec, how="left")
+cleanSessions = cleanSessions[~np.isnan(cleanSessions['secs_elapsed'])]
+print(cleanSessions)
