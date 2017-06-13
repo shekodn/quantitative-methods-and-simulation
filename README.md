@@ -1,2 +1,7 @@
-# quantitative-methods-and-simulation
-Upon completion of this course, students will be able to comprehend the characteristics of a stochastic process and identify different types of queuing models and the performance of various data link layer protocols. Students will be able to establish system and performance parameters in order to study the behavior of computer systems and telecommunication networks using simulations.
+### Setup
+###### Remember to have your ``` sessions.csv ``` file in the main directory!
+
+1. ``` sudo easy_install pip ```
+2. ``` sudo pip install wheel ```
+3. ``` sudo pip install pandas ```
+3. ``` sudo pip install seaborn ```
