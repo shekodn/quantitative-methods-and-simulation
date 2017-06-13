@@ -16,20 +16,14 @@ sessions_users = pd.read_csv('sessions.csv')
 
 # Merge train and test users
 users = pd.concat((train_users, test_users), axis=0, ignore_index=True)
-
 users.head()
 
 users.gender.replace('-unknown-', np.nan, inplace=True)
-
 users_nan = (users.isnull().sum() / users.shape[0]) * 100
 users_nan[users_nan > 0].drop('country_destination')
-
 users.age.describe()
-
 users[users.age > 122]['age'].describe()
-
 users[users.age < 18]['age'].describe()
-
 users.loc[users.age > 95, 'age'] = np.nan
 users.loc[users.age < 13, 'age'] = np.nan
 
