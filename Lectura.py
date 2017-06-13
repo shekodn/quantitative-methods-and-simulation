@@ -62,7 +62,7 @@ plt.show()
 sns.despine()
 
 cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
-cleanUsers2013 = cleanUseres2013[cleanUseres2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
-cleanUseres2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
+cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
+cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
 plt.show()
 ##########################################
