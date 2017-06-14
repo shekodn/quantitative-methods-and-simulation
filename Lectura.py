@@ -1,10 +1,12 @@
+from __future__ import print_function
 import matplotlib
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import csv
-import math
+from scipy import stats
+
 
 # Set figure aesthetics
 sns.set_style("white", {'ytick.major.size': 10.0})
@@ -56,12 +58,11 @@ cleanUsers = cleanUsers.sort_values(['id'], ascending=[1])
 notCleanUseres = users[users['date_first_booking'].isnull()]
 sessions_users.rename(columns={'user_id':'id'}, inplace=True)
 
-#Plot de porcetaje de edades
-plt.xlabel("Edad")
-plt.ylabel("Porcentaje")
-sns.distplot(cleanUsers.age.dropna(), color='#FD5C64')
-plt.show()
-sns.despine()
+# #Plot de porcetaje de edades
+# plt.xlabel("Edad")
+# plt.ylabel("Porcentaje")
+# sns.distplot(cleanUsers.age.dropna(), color='#FD5C64')
+# sns.despine()
 
 cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
 cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
@@ -69,14 +70,22 @@ cleanUsers2013['date_first_booking'] = cleanUsers2013['date_first_booking'].asty
 cleanUsers2013['date_first_booking'].groupby(cleanUsers2013['date_first_booking'].dt.month).count().plot(kind="bar")
 
 # cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
-plt.show()
+#plt.show()
 
 grpby = sessions_users.groupby(['id'])['secs_elapsed'].sum().reset_index()
 grpby.columns = ['id','secs_elapsed']
 
 cleanGroupSec = grpby[grpby['secs_elapsed'].notnull()]
 
-##########################################
-
 cleanSessions = cleanUsers.merge(cleanGroupSec, how="left")
+
+#Limpiamos los NaNs en secs_elapsed
 cleanSessions = cleanSessions[~np.isnan(cleanSessions['secs_elapsed'])]
+#Limpiamos los NaN en age
+cleanSessions = cleanSessions[~np.isnan(cleanSessions['age'])]
+
+row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
+print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+
+row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['secs_elapsed'])
+print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
