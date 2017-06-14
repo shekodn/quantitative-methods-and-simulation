@@ -60,13 +60,16 @@ sessions_users.rename(columns={'user_id':'id'}, inplace=True)
 plt.xlabel("Edad")
 plt.ylabel("Porcentaje")
 sns.distplot(cleanUsers.age.dropna(), color='#FD5C64')
-#plt.show()
+plt.show()
 sns.despine()
 
 cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
 cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
-cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
-#plt.show()
+cleanUsers2013['date_first_booking'] = cleanUsers2013['date_first_booking'].astype("datetime64[ns]")
+cleanUsers2013['date_first_booking'].groupby(cleanUsers2013['date_first_booking'].dt.month).count().plot(kind="bar")
+
+# cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
+plt.show()
 
 grpby = sessions_users.groupby(['id'])['secs_elapsed'].sum().reset_index()
 grpby.columns = ['id','secs_elapsed']
@@ -77,4 +80,3 @@ cleanGroupSec = grpby[grpby['secs_elapsed'].notnull()]
 
 cleanSessions = cleanUsers.merge(cleanGroupSec, how="left")
 cleanSessions = cleanSessions[~np.isnan(cleanSessions['secs_elapsed'])]
-print(cleanSessions)
