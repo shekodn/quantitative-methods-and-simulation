@@ -121,55 +121,55 @@ def printStatistics():
     row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
     print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
 
-    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['min_elapsed'])
+    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['bookingtime'].dt.days)
     print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
 
-cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
-cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
-cleanUsers2013['date_first_booking'] = cleanUsers2013['date_first_booking'].astype("datetime64[ns]")
-# cleanUsers2013['date_first_booking'].groupby(cleanUsers2013['date_first_booking'].dt.month).count().plot(kind="bar")
-
-# cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
-#plt.show()
-
-grpby = sessions_users.groupby(['id'])['secs_elapsed'].sum().reset_index()
-grpby.columns = ['id','secs_elapsed']
-
-cleanGroupSec = grpby[grpby['secs_elapsed'].notnull()]
-
-cleanSessions = cleanUsers.merge(cleanGroupSec, how="left")
-
-#Limpiamos los NaNs en secs_elapsed
-cleanSessions = cleanSessions[~np.isnan(cleanSessions['secs_elapsed'])]
-#Limpiamos los NaN en age
-cleanSessions = cleanSessions[~np.isnan(cleanSessions['age'])]
-
-#TODO
-# # f = Fitter(ARREGLO CON SESSIONS, distributions=["gamma", "expon", "norm", "weibull_min", "pareto"])
-# f.fit()
-# f.summary()
-
-# Sessions
-# stats.probplot(ARREGLO CON SESSIONS, dist= PONER BEST FIT, sparams = (5,), plot=pylab)
-# plt.show()
-# stats.probplot(ARREGLO CON SESSIONS, dist="norm", plot=pylab)
-# plt.show()
-
-
-# Age
-# stats.probplot(cleanSessions['age'], dist="gamma", sparams = (5,), plot=pylab)
-# plt.show()
-# stats.probplot(cleanSessions['age'], dist="norm", plot=pylab)
-# plt.show()
-
-
-# first booking month
-# stats.probplot(cleanSessions['date_first_booking'].groupby(cleanSessions['date_first_booking'].dt.month).count(), dist="weibull_min", sparams=(5,), plot=pylab)
-# stats.probplot(cleanSessions['date_first_booking'].groupby(cleanSessions['date_first_booking'].dt.month).count(), dist="norm", plot=pylab)
-# plt.show()
-
-row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
-print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
-
-row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['secs_elapsed'])
-print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+# cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
+# cleanUsers2013 = cleanUsers2013[cleanUsers2013['date_first_booking'] < pd.to_datetime(20140101, format='%Y%m%d')]
+# cleanUsers2013['date_first_booking'] = cleanUsers2013['date_first_booking'].astype("datetime64[ns]")
+# # cleanUsers2013['date_first_booking'].groupby(cleanUsers2013['date_first_booking'].dt.month).count().plot(kind="bar")
+#
+# # cleanUsers2013.date_first_booking.value_counts().plot(kind='line', linewidth=2, color='#FD5C64')
+# #plt.show()
+#
+# grpby = sessions_users.groupby(['id'])['secs_elapsed'].sum().reset_index()
+# grpby.columns = ['id','secs_elapsed']
+#
+# cleanGroupSec = grpby[grpby['secs_elapsed'].notnull()]
+#
+# cleanSessions = cleanUsers.merge(cleanGroupSec, how="left")
+#
+# #Limpiamos los NaNs en secs_elapsed
+# cleanSessions = cleanSessions[~np.isnan(cleanSessions['secs_elapsed'])]
+# #Limpiamos los NaN en age
+# cleanSessions = cleanSessions[~np.isnan(cleanSessions['age'])]
+#
+# #TODO
+# # # f = Fitter(ARREGLO CON SESSIONS, distributions=["gamma", "expon", "norm", "weibull_min", "pareto"])
+# # f.fit()
+# # f.summary()
+#
+# # Sessions
+# # stats.probplot(ARREGLO CON SESSIONS, dist= PONER BEST FIT, sparams = (5,), plot=pylab)
+# # plt.show()
+# # stats.probplot(ARREGLO CON SESSIONS, dist="norm", plot=pylab)
+# # plt.show()
+#
+#
+# # Age
+# # stats.probplot(cleanSessions['age'], dist="gamma", sparams = (5,), plot=pylab)
+# # plt.show()
+# # stats.probplot(cleanSessions['age'], dist="norm", plot=pylab)
+# # plt.show()
+#
+#
+# # first booking month
+# # stats.probplot(cleanSessions['date_first_booking'].groupby(cleanSessions['date_first_booking'].dt.month).count(), dist="weibull_min", sparams=(5,), plot=pylab)
+# # stats.probplot(cleanSessions['date_first_booking'].groupby(cleanSessions['date_first_booking'].dt.month).count(), dist="norm", plot=pylab)
+# # plt.show()
+#
+# row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
+# print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+#
+# row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['secs_elapsed'])
+# print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
