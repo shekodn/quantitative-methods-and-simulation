@@ -121,7 +121,7 @@ def printStatistics():
     row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
     print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
 
-    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['min_elapsed'])
+    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['bookingtime'].dt.days)
     print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
 
 cleanUsers2013 = cleanUsers[cleanUsers['date_first_booking'] > pd.to_datetime(20130101, format='%Y%m%d')]
