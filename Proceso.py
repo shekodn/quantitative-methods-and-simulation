@@ -10,6 +10,18 @@ import datetime
 from scipy import stats
 from matplotlib import pylab
 
+#Funciones
+def printStatistics(cleanSessions):
+    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
+    print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+
+    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['bookingtime'].dt.days)
+    print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+
+    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['date_first_booking'].dt.month)
+    print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+
+
 sns.set_style("white", {'ytick.major.size': 10.0})
 sns.set_context("poster", font_scale=1.1)
 
@@ -37,10 +49,4 @@ cleanSessions['bookingtime'] = cleanSessions['date_first_booking'] - cleanSessio
 # plt.ylabel("Cantidad (Bookings)")
 # plt.show()
 
-#Funciones
-def printStatistics():
-    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['age'])
-    print('*Age descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
-
-    row, minmax, mean, variance, skewness, kurtosis = stats.describe(cleanSessions['bookingtime'].dt.days)
-    print('*Sessions duration descriptive statistics*\n''rows: ', row, '\t', 'min and max: ', minmax, '\t', 'mean: ', '{0:.5g}'.format(mean), '\t', 'variance: ', '{0:.5g}'.format(variance), '\t', 'skewness: ', '{0:.5g}'.format(skewness), '\t', 'kurtosis: ', '{0:.5g}'.format(kurtosis), '\n')
+printStatistics(cleanSessions)
