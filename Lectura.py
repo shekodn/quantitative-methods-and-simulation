@@ -105,6 +105,8 @@ cleanSessions['date_first_booking'] = pd.to_datetime(cleanSessions['date_first_b
 cleanSessions['date_account_created'] = pd.to_datetime(cleanSessions['date_account_created'])
 cleanSessions['bookingtime'] = cleanSessions['date_first_booking'] - cleanSessions['date_account_created']
 
+cleanSessions.to_csv("Datos.csv")
+
 #print(cleanSessions['bookingtime'])
 
 #Plot de buckets de tiempo
