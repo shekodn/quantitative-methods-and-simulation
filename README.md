@@ -6,3 +6,4 @@
 3. ``` sudo pip install pandas ```
 3. ``` sudo pip install seaborn ```
 3. ``` sudo pip install fitter ```
+4. ``` sudo pip install -U scikit-learn ```

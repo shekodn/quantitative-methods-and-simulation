@@ -87,14 +87,7 @@ cleanSessions = cleanSessions[~np.isnan(cleanSessions['age'])]
 
 
 
-cont = 0
-for x in cleanSessions['secs_elapsed']:
-    cleanSessions['secs_elapsed'][cont] = math.ceil(x.astype(float) / 60)
-    cont += 1
 
-plt.show()
-
-cleanSessions.to_csv("Datos.csv")
 
 
 #Plot de first booking en meses
@@ -104,6 +97,8 @@ cleanSessions.to_csv("Datos.csv")
 cleanSessions['date_first_booking'] = pd.to_datetime(cleanSessions['date_first_booking'])
 cleanSessions['date_account_created'] = pd.to_datetime(cleanSessions['date_account_created'])
 cleanSessions['bookingtime'] = cleanSessions['date_first_booking'] - cleanSessions['date_account_created']
+
+cleanSessions.to_csv("Datos.csv")
 
 #print(cleanSessions['bookingtime'])
 
