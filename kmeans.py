@@ -28,8 +28,15 @@ cleanSessions = pd.read_csv('Datos.csv')
 #
 
 
+cleanSessions['date_first_booking_number'] = cleanSessions['date_first_booking']
 
-cleanSessions['date_first_booking_number'] = datetime.strptime(cleanSessions['date_first_booking'][0], '%Y-%m-%d')
+firstBooking = []
+
+cont = 0
+for x in cleanSessions['date_first_booking']:
+    cleanSessions['date_first_booking_number'][cont] = datetime.strptime(x,'%Y-%m-%d')
+    firstBooking.append(np.datetime64(cleanSessions['date_first_booking_number'][cont]).astype('uint64'))
+    cont += 1
 
 
 # cont = 0
@@ -38,15 +45,13 @@ cleanSessions['date_first_booking_number'] = datetime.strptime(cleanSessions['da
 #     print(cleanSessions['date_first_booking_number'][cont])
 #     cont += 1
 
-#print(type(np.datetime64(cleanSessions['date_first_booking_number'][0])))
 
-print(np.datetime64(cleanSessions['date_first_booking_number'][0]).astype('uint64') / 1e6)
 
-#print(type(cleanSessions['date_first_booking']))
-#print(type(cleanSessions.age))
 
 #cleanSessions.to_csv("Datos.csv")
 
-#KArray = [cleanSessions['bookingtime']]
 
-#resultFromKMeans = KMeans(n_clusters = 8).fit(KArray)
+KArray = [cleanSessions['bookingtime'], firstBooking, cleanSessions['age']]
+print("LISTO")
+resultFromKMeans = KMeans(n_clusters = 2).fit(KArray)
+print(resultFromKMeans.labels_)
