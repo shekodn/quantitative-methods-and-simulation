@@ -40,7 +40,15 @@ for x in cleanSessions['bookingtime']:
     data.append(np.array([x,y,z]))
     cont += 1
 
-resultFromKMeans = KMeans(n_clusters = 2, n_jobs = 2).fit(data)
-pcaResults = PCA(n_components = 3).fit(data)
+#Calculo de K-Means
+resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
+
+f = open("KMeans.txt", "w")
+cont = 0
+for x in resultFromKMeans.labels_:
+    f.write(str(cont) + ". " + str(x) + "\n")
+    cont += 1
+
+####pcaResults = PCA(n_components = 3).fit(data)
+
 print("K-Means results: ", resultFromKMeans.labels_)
-print("PCA resultas: ", pcaResults.explained_variance_)
