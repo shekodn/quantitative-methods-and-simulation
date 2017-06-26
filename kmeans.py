@@ -43,12 +43,22 @@ for x in cleanSessions['bookingtime']:
 #Calculo de K-Means
 resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
 
-f = open("KMeans.txt", "w")
+# f = open("KMeans.txt", "w")
+# cont = 0
+# for x in resultFromKMeans.labels_:
+#     f.write(str(cont) + ". " + str(x) + "\n")
+#     cont += 1
+
+pcaResults = PCA(n_components = 3).fit(data)
+x1 = PCA(n_components = 3).fit_transform(data)
+
+f = open("PCA_Results.txt", "w")
 cont = 0
-for x in resultFromKMeans.labels_:
-    f.write(str(cont) + ". " + str(x) + "\n")
+for x in x1:
+    f.write(str(cont) + ". " + str(cleanSessions['id'][cont]) + "\t" + str(x) + "\n")
     cont += 1
 
-####pcaResults = PCA(n_components = 3).fit(data)
+f.write("Varianza de los 3 componentes (variables): " +  str(pcaResults.explained_variance_[0]) + " " + str(pcaResults.explained_variance_[1]) + " " + str(pcaResults.explained_variance_[2]) + "\n")
 
 print("K-Means results: ", resultFromKMeans.labels_)
+print("PCA Componentes (3): ", pcaResults.explained_variance_)
