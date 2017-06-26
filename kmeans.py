@@ -36,14 +36,24 @@ def printDeResultados(resultsK, componentesPCA):
     print("PCA Componentes (3): ", componentesPCA.explained_variance_)
 
 
-def simulateNewData(datosLinealesUno, datosLinealesDos, datosLinealesTres):
-    for x in range(0, 10):
-        print(np.random.choice(datosLinealesUno))
+def simulateNewData():
+    newData = []
+    randomWeibull = np.random.weibull(1.6, 100)
+    randomGamma = np.random.gamma(5, 1, 100)
+    randomNorm = np.random.normal(50.872, 91.93, 100)
+    # valorMin = min(randomNorm)
+    # for x in range(0, len(randomNorm)):
+    #     randomNorm[x] += abs(valorMin)
+    for l in range(0, 99):
+        x = randomNorm[l]
+        y = randomWeibull[l]
+        z = randomGamma[l]
+        newData.append(np.array([x, y, z]))
+    return newData
 
 
 cleanSessions = pd.read_csv('Datos.csv')
 cleanSessions['date_first_booking_number'] = cleanSessions['date_first_booking']
-
 
 first_Booking = []
 cont = 0
@@ -53,17 +63,11 @@ cleanSessions['firstBooking'] = np.asarray(first_Booking)
 
 #Creation of numpy array
 data = []
-datosLinealesUno = []
-datosLinealesDos = []
-datosLinealesTres = []
 cont = 0
 for x in cleanSessions['bookingtime']:
     y = cleanSessions['firstBooking'][cont]
     z = cleanSessions['age'][cont]
     data.append(np.array([x,y,z]))
-    datosLinealesUno.append(x)
-    datosLinealesDos.append(y)
-    datosLinealesTres.append(z)
     cont += 1
 
 #Calculo de K-Means
@@ -74,7 +78,9 @@ componentesPCA = PCA(n_components = 3).fit(data)
 resultsPCA = PCA(n_components = 3).fit_transform(data)
 
 
-simulateNewData(datosLinealesUno, datosLinealesDos, datosLinealesTres)
+newData = simulateNewData()
+
+print(resultFromKMeans.predict(newData))
 
 #Creacion de Archivos y impresion en terminal
 creacionDeArchivos(resultFromKMeans, resultsPCA, componentesPCA)
