@@ -14,20 +14,32 @@ from sklearn.decomposition import PCA
 from matplotlib import pylab
 from dateutil import parser
 
-def creacionDeArchivos(resultsK, resultsPCA):
+def creacionDeArchivos(resultsK, resultsPCA, componentesPCA):
     f = open("KMeans.txt", "w")
     cont = 0
     for x in resultFromKMeans.labels_:
         f.write(str(cont) + ". " + str(x) + "\n")
         cont += 1
+    f.close()
 
     f2 = open("PCA_Results.txt", "w")
     cont = 0
-    for x in x1:
+    for x in resultsPCA:
         f2.write(str(cont) + ". " + str(cleanSessions['id'][cont]) + "\t" + str(x) + "\n")
         cont += 1
+    f2.write("Varianza de los 3 componentes (variables): " +  str(componentesPCA.explained_variance_[0]) + " " + str(componentesPCA.explained_variance_[1]) + " " + str(componentesPCA.explained_variance_[2]) + "\n")
+    f2.close()
 
-    f2.write("Varianza de los 3 componentes (variables): " +  str(pcaResults.explained_variance_[0]) + " " + str(pcaResults.explained_variance_[1]) + " " + str(pcaResults.explained_variance_[2]) + "\n")
+
+def printDeResultados(resultsK, componentesPCA):
+    print("K-Means results: ", resultsK.labels_)
+    print("PCA Componentes (3): ", componentesPCA.explained_variance_)
+
+
+def simulateNewData(datosLinealesUno, datosLinealesDos, datosLinealesTres):
+    for x in range(0, 10):
+        print(np.random.choice(datosLinealesUno))
+
 
 cleanSessions = pd.read_csv('Datos.csv')
 cleanSessions['date_first_booking_number'] = cleanSessions['date_first_booking']
@@ -41,11 +53,17 @@ cleanSessions['firstBooking'] = np.asarray(first_Booking)
 
 #Creation of numpy array
 data = []
+datosLinealesUno = []
+datosLinealesDos = []
+datosLinealesTres = []
 cont = 0
 for x in cleanSessions['bookingtime']:
     y = cleanSessions['firstBooking'][cont]
     z = cleanSessions['age'][cont]
     data.append(np.array([x,y,z]))
+    datosLinealesUno.append(x)
+    datosLinealesDos.append(y)
+    datosLinealesTres.append(z)
     cont += 1
 
 #Calculo de K-Means
@@ -55,7 +73,9 @@ resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
 componentesPCA = PCA(n_components = 3).fit(data)
 resultsPCA = PCA(n_components = 3).fit_transform(data)
 
-print("K-Means results: ", resultFromKMeans.labels_)
-print("PCA Componentes (3): ", componentesPCA.explained_variance_)
 
-creacionDeArchivos(resultFromKMeans, resultsPCA)
+simulateNewData(datosLinealesUno, datosLinealesDos, datosLinealesTres)
+
+#Creacion de Archivos y impresion en terminal
+creacionDeArchivos(resultFromKMeans, resultsPCA, componentesPCA)
+printDeResultados(resultFromKMeans, componentesPCA)
