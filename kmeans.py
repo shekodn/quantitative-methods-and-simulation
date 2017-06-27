@@ -14,7 +14,7 @@ from sklearn.decomposition import PCA
 from matplotlib import pylab
 from dateutil import parser
 
-def creacionDeArchivos(resultsK, resultsPCA, componentesPCA):
+def creacionDeArchivos(resultsK, resultsPCA, componentesPCA, newData, newCluster):
     f = open("KMeans.txt", "w")
     cont = 0
     for x in resultFromKMeans.labels_:
@@ -30,6 +30,11 @@ def creacionDeArchivos(resultsK, resultsPCA, componentesPCA):
     f2.write("Varianza de los 3 componentes (variables): " +  str(componentesPCA.explained_variance_[0]) + " " + str(componentesPCA.explained_variance_[1]) + " " + str(componentesPCA.explained_variance_[2]) + "\n")
     f2.close()
 
+    f3 = open("NewData_Cluster.txt", "w")
+    f3.write("Numero.\t\tGrupo.\t\tTiempo.\t\t\t\tMes.\t\t\t\tEdad.\n")
+    for x in range(0,99):
+        f3.write(str(x) + "\t\t" + str(newCluster[x]) + "\t\t" + str(newData[x][0]) + "\t\t\t" + str(newData[x][1]) + "\t\t\t" + str(newData[x][2]) + "\n")
+    f3.close()
 
 def printDeResultados(resultsK, componentesPCA):
     print("K-Means results: ", resultsK.labels_)
@@ -38,15 +43,26 @@ def printDeResultados(resultsK, componentesPCA):
 
 def simulateNewData():
     newData = []
-    randomWeibull = np.random.weibull(1.6, 100)
-    randomGamma = np.random.gamma(5, 1, 100)
+    #Datos aleatores de acuerdo a sus distribucion
+
+    ##Tiempo para primer booking
     randomNorm = np.random.normal(50.872, 91.93, 100)
+
+    ##Mes
+    randomWeibull = np.random.weibull(1.6, 100)
+
+    ##Edad
+    randomGamma = np.random.gamma(5, 1, 100)
+
     # valorMin = min(randomNorm)
     # for x in range(0, len(randomNorm)):
     #     randomNorm[x] += abs(valorMin)
     for l in range(0, 99):
+        #Tiempo
         x = randomNorm[l]
+        #Mes
         y = randomWeibull[l]
+        #Edad
         z = randomGamma[l]
         newData.append(np.array([x, y, z]))
     return newData
@@ -77,11 +93,9 @@ resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
 componentesPCA = PCA(n_components = 3).fit(data)
 resultsPCA = PCA(n_components = 3).fit_transform(data)
 
-
 newData = simulateNewData()
-
-print(resultFromKMeans.predict(newData))
+newCluster = resultFromKMeans.predict(newData)
 
 #Creacion de Archivos y impresion en terminal
-creacionDeArchivos(resultFromKMeans, resultsPCA, componentesPCA)
+creacionDeArchivos(resultFromKMeans, resultsPCA, componentesPCA, newData, newCluster)
 printDeResultados(resultFromKMeans, componentesPCA)
