@@ -15,23 +15,29 @@ from matplotlib import pylab
 from dateutil import parser
 
 def creacionDeArchivos(resultsK, resultsPCA, componentesPCA, newData, newCluster):
+
+    #Resultados de clustering
     f = open('../Resultados/KMeans.txt', 'w')
+    f.write("Numero\tID\tGrupo\n")
     cont = 0
     for x in resultFromKMeans.labels_:
-        f.write(str(cont) + '. ' + str(x) + '\n')
+        f.write(str(cont) + '\t' + str(cleanSessions['id'][cont]) + "\t"+ str(x) + '\n')
         cont += 1
     f.close()
 
+    #Resultados del PCA
     f2 = open('../Resultados/PCA_Results.txt', 'w')
+    f2.write("Numero\tID\t\tValores(Tiempo, Mes, Edad)\n")
     cont = 0
     for x in resultsPCA:
-        f2.write(str(cont) + '. ' + str(cleanSessions['id'][cont]) + '\t' + str(x) + '\n')
+        f2.write(str(cont) + '\t' + str(cleanSessions['id'][cont]) + '\t' + str(x) + '\n')
         cont += 1
     f2.write('Varianza de los 3 componentes (variables): ' +  str(componentesPCA.explained_variance_[0]) + ' ' + str(componentesPCA.explained_variance_[1]) + ' ' + str(componentesPCA.explained_variance_[2]) + '\n')
     f2.close()
 
+    #Resultados de clustering con nuevos datos
     f3 = open('../Resultados/NewData_Cluster.txt', 'w')
-    f3.write('Numero.\t\tGrupo.\t\tTiempo.\t\t\t\tMes.\t\t\t\tEdad.\n')
+    f3.write('Numero\t\tGrupo\t\tTiempo\t\t\t\tMes\t\t\t\tEdad\n')
     for x in range(0,99):
         f3.write(str(x) + '\t\t' + str(newCluster[x]) + '\t\t' + str(newData[x][0]) + '\t\t\t' + str(newData[x][1]) + '\t\t\t' + str(newData[x][2]) + '\n')
     f3.close()
@@ -67,7 +73,7 @@ def simulateNewData():
         newData.append(np.array([x, y, z]))
     return newData
 
-
+####Arranque del codigo####
 cleanSessions = pd.read_csv('../CSV/Datos.csv')
 cleanSessions['date_first_booking_number'] = cleanSessions['date_first_booking']
 
@@ -93,6 +99,7 @@ resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
 componentesPCA = PCA(n_components = 3).fit(data)
 resultsPCA = PCA(n_components = 3).fit_transform(data)
 
+#Nuevos datos generados con distribuciones propias
 newData = simulateNewData()
 newCluster = resultFromKMeans.predict(newData)
 
