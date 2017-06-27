@@ -37,9 +37,22 @@ def creacionDeArchivos(resultsK, resultsPCA, componentesPCA, newData, newCluster
 
     #Resultados de clustering con nuevos datos
     f3 = open('../Resultados/NewData_Cluster.txt', 'w')
+    #Archivos individuales para separar los grupos y analizarlos mejor
+    f3_1 = open('../Resultados/NewData_Cluster_1.txt', 'w')
+    f3_2 = open('../Resultados/NewData_Cluster_2.txt', 'w')
+    f3_3 = open('../Resultados/NewData_Cluster_3.txt', 'w')
     f3.write('Numero\t\tGrupo\t\tTiempo\t\t\t\tMes\t\t\t\tEdad\n')
-    for x in range(0,99):
+    f3_1.write('Numero\t\tGrupo\t\tTiempo\t\t\t\tMes\t\t\t\tEdad\n')
+    f3_2.write('Numero\t\tGrupo\t\tTiempo\t\t\t\tMes\t\t\t\tEdad\n')
+    f3_3.write('Numero\t\tGrupo\t\tTiempo\t\t\t\tMes\t\t\t\tEdad\n')
+    for x in xrange(0,99):
         f3.write(str(x) + '\t\t' + str(newCluster[x]) + '\t\t' + str(newData[x][0]) + '\t\t\t' + str(newData[x][1]) + '\t\t\t' + str(newData[x][2]) + '\n')
+        if newCluster[x] == 0:
+            f3_1.write(str(x) + '\t\t' + str(newCluster[x]) + '\t\t' + str(newData[x][0]) + '\t\t\t' + str(newData[x][1]) + '\t\t\t' + str(newData[x][2]) + '\n')
+        elif newCluster[x] == 1:
+            f3_2.write(str(x) + '\t\t' + str(newCluster[x]) + '\t\t' + str(newData[x][0]) + '\t\t\t' + str(newData[x][1]) + '\t\t\t' + str(newData[x][2]) + '\n')
+        else:
+            f3_3.write(str(x) + '\t\t' + str(newCluster[x]) + '\t\t' + str(newData[x][0]) + '\t\t\t' + str(newData[x][1]) + '\t\t\t' + str(newData[x][2]) + '\n')
     f3.close()
 
 def printDeResultados(resultsK, componentesPCA):
@@ -60,9 +73,11 @@ def simulateNewData():
     ##Edad
     randomGamma = np.random.gamma(5, 1, 100)
 
-    # valorMin = min(randomNorm)
-    # for x in range(0, len(randomNorm)):
-    #     randomNorm[x] += abs(valorMin)
+    #Normalizamos los datos sumando el minimo
+    valorMin = min(randomNorm)
+    for x in range(0, len(randomNorm)):
+        randomNorm[x] += abs(valorMin)
+
     for l in range(0, 99):
         #Tiempo
         x = randomNorm[l]
