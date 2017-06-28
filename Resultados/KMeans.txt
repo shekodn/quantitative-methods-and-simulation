@@ -1401,7 +1401,7 @@ Numero	ID	Grupo
 1399	26kt8oct2h	2
 1400	26mlro4ji1	1
 1401	26pyx9uhkb	1
-1402	26rt76ni77	2
+1402	26rt76ni77	1
 1403	26tlfxqpvs	1
 1404	26vdvc0e65	1
 1405	26wahx26r0	1
@@ -1492,7 +1492,7 @@ Numero	ID	Grupo
 1490	2cw4401h2u	1
 1491	2cw6qmv15g	1
 1492	2cwnios0mm	1
-1493	2cx3dyvaxa	2
+1493	2cx3dyvaxa	1
 1494	2cxi0toawg	1
 1495	2cxj2pj0wu	1
 1496	2cz2oz0mgd	1
@@ -2140,7 +2140,7 @@ Numero	ID	Grupo
 2138	3egtu34lgp	2
 2139	3ehyb3nuas	1
 2140	3eibttpa7k	0
-2141	3ejq706bn0	2
+2141	3ejq706bn0	1
 2142	3ek42q5a2k	1
 2143	3esb4btj17	1
 2144	3ev0bwubos	2
@@ -4621,7 +4621,7 @@ Numero	ID	Grupo
 4619	7is99cm9ti	1
 4620	7isq2v2vo3	1
 4621	7ivlreo3gd	0
-4622	7iyyyl6hzr	2
+4622	7iyyyl6hzr	1
 4623	7iz4e57ti0	1
 4624	7j9nu9ex5l	1
 4625	7jako2k0rb	1
@@ -4807,7 +4807,7 @@ Numero	ID	Grupo
 4805	7stj7tkhce	1
 4806	7su0ihmhlg	1
 4807	7su5x811kn	1
-4808	7svcxa65zs	2
+4808	7svcxa65zs	1
 4809	7swui9xebm	1
 4810	7sxvcgq8ws	1
 4811	7t3akhiheg	1
@@ -5725,7 +5725,7 @@ Numero	ID	Grupo
 5723	9cgi474oul	1
 5724	9choamchcy	1
 5725	9covsohzpz	1
-5726	9ctb85xe5t	2
+5726	9ctb85xe5t	1
 5727	9cufg3xec1	0
 5728	9culziljpd	0
 5729	9cw9wqorbd	2
@@ -6443,7 +6443,7 @@ Numero	ID	Grupo
 6441	agl2py6xsg	0
 6442	agntl5otup	1
 6443	agoreutpwo	1
-6444	agpjaz8d8y	2
+6444	agpjaz8d8y	1
 6445	agwlsyauj8	1
 6446	agxdy1rrq7	1
 6447	agy23vnsom	1
@@ -7050,7 +7050,7 @@ Numero	ID	Grupo
 7048	bhrpn4zmoy	1
 7049	bhs1coz9j4	1
 7050	bhszzinadq	1
-7051	bhy6taijvn	2
+7051	bhy6taijvn	1
 7052	bhyvz8xxqy	0
 7053	bi2yklggwq	1
 7054	bi8kroo3xi	1
@@ -7146,7 +7146,7 @@ Numero	ID	Grupo
 7144	bmzv3n6lsa	1
 7145	bn04eeeig9	0
 7146	bn1c695f6d	1
-7147	bn4355re3b	2
+7147	bn4355re3b	1
 7148	bn6uol2zeo	2
 7149	bn7lqr9ipj	1
 7150	bn8ws4bvxz	1
@@ -7758,7 +7758,7 @@ Numero	ID	Grupo
 7756	cmpqxxq7d0	1
 7757	cmr77dapxk	1
 7758	cmrroeos47	0
-7759	cms4yii9cq	2
+7759	cms4yii9cq	1
 7760	cmsgx285pd	0
 7761	cmuucraa6g	1
 7762	cmxonp6rlp	1
@@ -8925,7 +8925,7 @@ Numero	ID	Grupo
 8923	ei5dpsjvgp	1
 8924	ei5qzw7si3	1
 8925	ei8rvd0195	1
-8926	eig63am1my	2
+8926	eig63am1my	1
 8927	eij4jrchl9	1
 8928	eimd8sfy0q	1
 8929	eiqws5xy5n	1
@@ -9660,7 +9660,7 @@ Numero	ID	Grupo
 9658	fq3pi07qro	1
 9659	fq4kdwqvhy	0
 9660	fq4wu4os70	1
-9661	fq50b0yrpi	2
+9661	fq50b0yrpi	1
 9662	fq6j6wfg6m	1
 9663	fq7ey8e5to	1
 9664	fq7sxccwne	1
@@ -9818,7 +9818,7 @@ Numero	ID	Grupo
 9816	fziv6unxy1	1
 9817	fzktexkq5l	1
 9818	fzku7jslzy	1
-9819	fzmel81pzd	2
+9819	fzmel81pzd	1
 9820	fznqhkp9bv	1
 9821	fzonpxwdir	1
 9822	fzr9ic3xz9	1
@@ -11349,7 +11349,7 @@ Numero	ID	Grupo
 11347	ihav0bh3ov	1
 11348	ihbatn3w0e	1
 11349	ihd1w6wlin	1
-11350	ihgi2z71qu	2
+11350	ihgi2z71qu	1
 11351	ihgn38dx7p	1
 11352	ihhsh8pyv4	1
 11353	ihi3itv5u3	2
@@ -11644,7 +11644,7 @@ Numero	ID	Grupo
 11642	j13eso8wg8	1
 11643	j143pxaar0	1
 11644	j15lvvdf7g	0
-11645	j1dxghf1h7	2
+11645	j1dxghf1h7	1
 11646	j1gmglt8lf	1
 11647	j1i9qn5ldh	1
 11648	j1ihwz9mpv	1
@@ -13507,7 +13507,7 @@ Numero	ID	Grupo
 13505	m0fmlkhxss	0
 13506	m0kwkq6odz	1
 13507	m0mchb8oy9	1
-13508	m0nv0kyycd	2
+13508	m0nv0kyycd	1
 13509	m0tkxs3ojs	0
 13510	m0u8zx2gij	2
 13511	m0uq4aivww	2
@@ -13841,7 +13841,7 @@ Numero	ID	Grupo
 13839	mlblys3ovu	1
 13840	mlc9sos6g3	1
 13841	mlconjzpx9	1
-13842	mlguc4cypv	2
+13842	mlguc4cypv	1
 13843	mlkef5uni5	1
 13844	mlnch023c8	1
 13845	mlnz0lcxmk	2
@@ -14765,7 +14765,7 @@ Numero	ID	Grupo
 14763	o1eimyk9be	2
 14764	o1k0qghiqd	1
 14765	o1n6psc575	1
-14766	o1pohwajed	2
+14766	o1pohwajed	1
 14767	o1vrthgmt5	1
 14768	o1yran2n0x	0
 14769	o2216zbg8l	1
@@ -15377,7 +15377,7 @@ Numero	ID	Grupo
 15375	p1ygxzb7x0	1
 15376	p1ym2fwf0l	1
 15377	p1zg2w21gs	1
-15378	p205p76e2b	2
+15378	p205p76e2b	1
 15379	p2bq3qpas8	1
 15380	p2bv4mpv7v	2
 15381	p2f0nd6vdy	1
@@ -16158,7 +16158,7 @@ Numero	ID	Grupo
 16156	qba331fwhn	1
 16157	qbl1v3o96z	1
 16158	qblii5um3f	2
-16159	qbs6vgtxu6	2
+16159	qbs6vgtxu6	1
 16160	qbti0tvt5z	1
 16161	qbtuyl0y9b	1
 16162	qbwjk540tv	1
@@ -16380,7 +16380,7 @@ Numero	ID	Grupo
 16378	qoouslfgf0	1
 16379	qoqypeah7q	0
 16380	qot50sc4jd	1
-16381	qp1okdcfuk	2
+16381	qp1okdcfuk	1
 16382	qp4r5ldcai	1
 16383	qp4snsqonm	1
 16384	qp85t63tkf	1
@@ -16978,7 +16978,7 @@ Numero	ID	Grupo
 16976	rq05eodek7	1
 16977	rq3wtuodgj	1
 16978	rq6e6fn9n2	1
-16979	rqa1lrhwbp	2
+16979	rqa1lrhwbp	1
 16980	rqbuhpvowt	1
 16981	rqdhrlmoc5	1
 16982	rqdraw1n65	1
@@ -18973,7 +18973,7 @@ Numero	ID	Grupo
 18971	uzxifu9gav	1
 18972	v0081z92l8	1
 18973	v04dpv4puv	1
-18974	v07g2rwzkn	2
+18974	v07g2rwzkn	1
 18975	v07ylnjif9	1
 18976	v09li0pl13	0
 18977	v09lvy5423	2
@@ -19086,7 +19086,7 @@ Numero	ID	Grupo
 19084	v6vcrdlc4j	1
 19085	v6wc2pstzv	1
 19086	v706czykns	2
-19087	v70q4trvrr	2
+19087	v70q4trvrr	1
 19088	v72yl8cj8g	1
 19089	v755ob6i3p	0
 19090	v76b7v29t5	1
@@ -19265,14 +19265,14 @@ Numero	ID	Grupo
 19263	vgvy59w52p	1
 19264	vgxkfe2c66	1
 19265	vgxujusmwm	1
-19266	vh1am1gpqi	2
+19266	vh1am1gpqi	1
 19267	vh3sx7ou72	1
 19268	vh3t7933jt	1
 19269	vh3xsobs2n	2
 19270	vh44q2lik5	1
 19271	vh5f5ifuzi	1
 19272	vh65w3i6o7	2
-19273	vh851eehp6	2
+19273	vh851eehp6	1
 19274	vh9jp6zbdy	0
 19275	vha7r7i360	1
 19276	vhaevkb3ja	1
@@ -19784,7 +19784,7 @@ Numero	ID	Grupo
 19782	we1sjesx0x	1
 19783	we29ycnbs6	2
 19784	we4a5ni1zd	1
-19785	we70pfldsm	2
+19785	we70pfldsm	1
 19786	we7a0kgrid	2
 19787	we85m7706l	1
 19788	wea9llzk4s	1
@@ -20749,7 +20749,7 @@ Numero	ID	Grupo
 20747	xxe7bv42ea	1
 20748	xxgixlmz1c	1
 20749	xxhpg5929w	1
-20750	xxk4ydzhc0	2
+20750	xxk4ydzhc0	1
 20751	xxk5vexi1q	1
 20752	xxs8yyen66	1
 20753	xxwx5nqtlv	1

@@ -78,7 +78,7 @@ def simulateNewData():
     for x in range(0, len(randomNorm)):
         randomNorm[x] += abs(valorMin)
 
-    for l in range(0, 99):
+    for l in xrange(0, 99):
         #Tiempo
         x = randomNorm[l]
         #Mes
