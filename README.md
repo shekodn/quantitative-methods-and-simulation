@@ -9,10 +9,8 @@
 4. ``` sudo pip install -U scikit-learn ```
 
 ### Remainder
-``` The following project contains many documents whose only purpose were obtain more clean data, and therefore were left on a older version.
-```
-``` The following documents are the one that actually work and create the results.
-```
+The following project contains many documents whose only purpose were obtain more clean data, and therefore were left on a older version.
+The following documents are the one that actually work and create the results.
 
 1. ``` ../CSV/Datos.csv```
 2. ``` ../Python/kmeans.py```
