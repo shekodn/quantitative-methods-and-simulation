@@ -13,6 +13,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from matplotlib import pylab
 from dateutil import parser
+from fitter import Fitter
 
 def creacionDeArchivos(resultsK, resultsPCA):
     f = open("KMeans.txt", "w")
@@ -33,29 +34,42 @@ cleanSessions = pd.read_csv('Datos.csv')
 cleanSessions['date_first_booking_number'] = cleanSessions['date_first_booking']
 
 
-first_Booking = []
-cont = 0
-for x in cleanSessions['date_first_booking']:
-    first_Booking.append(float((x[5:7])))
-cleanSessions['firstBooking'] = np.asarray(first_Booking)
+#TODO
+# f = Fitter(cleanSessions['bookingtime'], distributions=["gamma", "expon", "norm", "weibull_min", "pareto"])
+# f = Fitter(cleanSessions['bookingtime'], distributions=["norm"])
+# f.fit()
+# f.summary()
 
-#Creation of numpy array
-data = []
-cont = 0
-for x in cleanSessions['bookingtime']:
-    y = cleanSessions['firstBooking'][cont]
-    z = cleanSessions['age'][cont]
-    data.append(np.array([x,y,z]))
-    cont += 1
+# Sessions
+# Best fit = norm
+stats.probplot(cleanSessions['bookingtime'], dist="norm", plot=pylab)
+plt.show()
 
-#Calculo de K-Means
-resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
 
-#Calculo de componentes de PCA y valores de PCA
-componentesPCA = PCA(n_components = 3).fit(data)
-resultsPCA = PCA(n_components = 3).fit_transform(data)
 
-print("K-Means results: ", resultFromKMeans.labels_)
-print("PCA Componentes (3): ", componentesPCA.explained_variance_)
-
-creacionDeArchivos(resultFromKMeans, resultsPCA)
+# first_Booking = []
+# cont = 0
+# for x in cleanSessions['date_first_booking']:
+#     first_Booking.append(float((x[5:7])))
+# cleanSessions['firstBooking'] = np.asarray(first_Booking)
+#
+# #Creation of numpy array
+# data = []
+# cont = 0
+# for x in cleanSessions['bookingtime']:
+#     y = cleanSessions['firstBooking'][cont]
+#     z = cleanSessions['age'][cont]
+#     data.append(np.array([x,y,z]))
+#     cont += 1
+#
+# #Calculo de K-Means
+# resultFromKMeans = KMeans(n_clusters = 3, n_jobs = 2).fit(data)
+#
+# #Calculo de componentes de PCA y valores de PCA
+# componentesPCA = PCA(n_components = 3).fit(data)
+# resultsPCA = PCA(n_components = 3).fit_transform(data)
+#
+# print("K-Means results: ", resultFromKMeans.labels_)
+# print("PCA Componentes (3): ", componentesPCA.explained_variance_)
+#
+# creacionDeArchivos(resultFromKMeans, resultsPCA)
